@@ -67,11 +67,6 @@ input:focus{
     outline: none;
 }
 
-svg{
-    position: absolute;
-    padding: 5px;
-    
-}
 
 button.search-btn{
     padding: 0 1rem;
@@ -94,7 +89,7 @@ button.search-btn{
     gap: 1.8rem;
     max-width: 70rem;
     margin: 0 auto;
-    padding: 1.6rem 0 1rem 0;
+    padding: 1.8rem 0 1rem 0;
 }
 
 .film-card-poster{
@@ -103,11 +98,58 @@ button.search-btn{
     object-position: top;
 }
 
-.card-text-row{
-    display: flex;
-    gap: 1.3rem;
-}
+
 
 hr{
-    border-top: 1px solid #2C2C2C;
+    border-color:#A5A5A5 ;
+    margin-top: 1.5rem;
+    max-width: 70rem;
+}
+
+.card-text-row-1{
+    display: flex;
+    gap: .5rem;
+    align-items: baseline;
+}
+
+.film-title{
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0.5rem 0;
+}
+
+svg.star-icon{
+    margin: auto 0 auto 0.3rem;
+}
+
+p.film-rating{
+    font-size: 0.8rem;
+}
+
+.card-text-row-2{
+    font-size: 0.8rem;
+    display: flex;
+    gap: .8rem;
+    align-items: baseline;
+}
+
+button.watchlist-btn{
+    background-color: transparent;
+    border: none;
+    color: white;
+    margin: auto 0;
+    display: flex;
+    align-content: center;
+    cursor: pointer;
+}
+
+svg.watchlist-icon{
+    margin-right: 0.3rem;
+}
+
+p.film-plot{
+    color: #A5A5A5;
+    font-size: 0.9rem;
+    line-height: 1.25rem;
+    margin-top: 0;
 }
