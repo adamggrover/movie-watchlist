@@ -1,10 +1,20 @@
-const filmsContainer = document.querySelector('.films-container')
+const filmsContainer = document.querySelector('.films-container');
+const searchInput = document.querySelector('.search-input');
+const searchBtn = document.querySelector('.search-btn');
 
-fetch('http://www.omdbapi.com/?apikey=9442cef9&s=blade&page=3')
+
+
+searchBtn.addEventListener('click', (e)=>{
+    e.preventDefault()
+    const searchQuery = searchInput.value;
+
+    filmsContainer.innerHTML = '';
+
+    fetch(`http://www.omdbapi.com/?apikey=9442cef9&s=${searchQuery}`)
     .then( res => res.json())
     .then(searchData => {
 
-        console.table(searchData)
+        
 
         const searchResults = searchData.Search
 
@@ -17,13 +27,14 @@ fetch('http://www.omdbapi.com/?apikey=9442cef9&s=blade&page=3')
             .then(response => response.json())
             .then(filmData =>{
 
-                console.log(filmData)
+                console.log(searchResults)
 
                 filmsContainer.innerHTML += `
                 
+                
                 <div class="film-card">
 
-                    <img src="${filmData.Poster}" class="film-card-poster"></img>
+                    <img src="${filmData.Poster}" class="film-card-poster" alt="film poster"></img>
                     <div class="film-card-text">
                         <a href="https://www.imdb.com/title/${imdbId}/" target="_blank">
                             <div class="card-text-row-1">
@@ -54,18 +65,9 @@ fetch('http://www.omdbapi.com/?apikey=9442cef9&s=blade&page=3')
                     
                 </div>
                 <hr>
-         
                 `
-
-
-
-
             })
-
-
         }
-
-        
-        
-        
     })
+});
+

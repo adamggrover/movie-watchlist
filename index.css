@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+:root{
+    --page-width: 70rem;
+}
+
 
 body{
     background-color: #000000;
@@ -23,7 +27,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 70rem;
+    max-width: var(--page-width);
     flex-grow: 1;
 }
 
@@ -45,7 +49,7 @@ form{
     height: 2rem;
     margin: -1rem auto 0 auto;
     /* padding: 0 3rem; */
-    max-width: 70rem;
+    max-width: var(--page-width);
     
     
 }
@@ -67,6 +71,15 @@ input:focus{
     outline: none;
 }
 
+/* clears the ‘X’ from search input Internet Explorer */
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+/* clears the ‘X’ from search input Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
 
 button.search-btn{
     padding: 0 1rem;
@@ -76,21 +89,25 @@ button.search-btn{
     height: 2rem;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    cursor: pointer;
 }
 
 .films-container{
-    padding: 0 3rem;
+    padding: 3rem;
     
     
 }
+
 
 .film-card{
     display: flex;
     gap: 1.8rem;
-    max-width: 70rem;
+    max-width: var(--page-width);
     margin: 0 auto;
     padding: 1.8rem 0 1rem 0;
+    min-height: 15rem;
 }
+
 
 .film-card-poster{
     width: 8rem;
@@ -98,12 +115,14 @@ button.search-btn{
     object-position: top;
 }
 
-
-
 hr{
     border-color:#A5A5A5 ;
     margin-top: 1.5rem;
-    max-width: 70rem;
+    max-width: var(--page-width);
+}
+
+hr:last-child {
+    display: none;
 }
 
 .card-text-row-1{
@@ -152,4 +171,20 @@ p.film-plot{
     font-size: 0.9rem;
     line-height: 1.25rem;
     margin-top: 0;
+}
+
+div.placeholder-films-content{
+
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    color: #2E2E2F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    flex-grow: 1;
+    justify-content: flex-start;
+    padding-top: 13rem;
+
 }
