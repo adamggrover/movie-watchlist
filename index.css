@@ -1,9 +1,113 @@
+* {
+    box-sizing: border-box;
+}
+
+
 body{
     background-color: #000000;
     color: white;
     font-family: sans-serif;
+    margin: 0;
 }
 
 header{
-    background-image: url(./);
+    background-image: url(./cover-img.png);
+    height: 13rem;
+    object-fit: cover;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.header-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 70rem;
+    flex-grow: 1;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.page-link{
+    font-size: 0.8rem;
+}
+
+section.form-section{
+    margin: 0 3rem;
+}
+
+form{
+    display: flex;
+    height: 2rem;
+    margin: -1rem auto 0 auto;
+    /* padding: 0 3rem; */
+    max-width: 70rem;
+    
+    
+}
+
+input{
+    flex-grow: 1;
+    color: #A5A5A5;
+    padding: 0 1rem;
+    background: #2E2E2F;
+    height: 2rem;
+    border: none;
+    font-weight: 500;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px; 
+
+}
+
+input:focus{
+    outline: none;
+}
+
+svg{
+    position: absolute;
+    padding: 5px;
+    
+}
+
+button.search-btn{
+    padding: 0 1rem;
+    color: white;
+    border: none;
+    background: #4B4B4B;
+    height: 2rem;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.films-container{
+    padding: 0 3rem;
+    
+    
+}
+
+.film-card{
+    display: flex;
+    gap: 1.8rem;
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 1.6rem 0 1rem 0;
+}
+
+.film-card-poster{
+    width: 8rem;
+    object-fit: contain;
+    object-position: top;
+}
+
+.card-text-row{
+    display: flex;
+    gap: 1.3rem;
+}
+
+hr{
+    border-top: 1px solid #2C2C2C;
 }
