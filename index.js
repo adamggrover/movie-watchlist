@@ -14,7 +14,6 @@ function loadWatchlist(){
 
         for(item of watchlist){
 
-            console.log(item)
 
             const imdbId = item
             // const itemIndex = searchResults.indexOf(item)
@@ -24,7 +23,6 @@ function loadWatchlist(){
             .then(response => response.json())
             .then(filmData =>{
 
-                console.log(filmData)
 
                 watchlistContainer.innerHTML += `
                 
@@ -47,9 +45,9 @@ function loadWatchlist(){
                             <p>${filmData.Genre}</p>
                             <button class="watchlist-btn" onclick="removeFromWatchlist(this)" value="${item}">
                                 <svg class="watchlist-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16ZM9 5C9 4.44772 8.55228 4 8 4C7.44772 4 7 4.44772 7 5V7H5C4.44772 7 4 7.44771 4 8C4 8.55228 4.44772 9 5 9H7V11C7 11.5523 7.44772 12 8 12C8.55228 12 9 11.5523 9 11V9H11C11.5523 9 12 8.55228 12 8C12 7.44772 11.5523 7 11 7H9V5Z" fill="white"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16ZM5 7C4.44772 7 4 7.44772 4 8C4 8.55228 4.44772 9 5 9H11C11.5523 9 12 8.55229 12 8C12 7.44772 11.5523 7 11 7H5Z" fill="white"/>
                                 </svg>
-                                Watchlist
+                                Remove
                             </button>
                         </div>
                         
@@ -82,12 +80,38 @@ function addToWatchlist(item){
     if (!localStorage.getItem('watchlist')){
         localStorage.setItem('watchlist', '[]')
     }
+
     // retrieve current watchlist
     let watchlist = JSON.parse(localStorage.getItem('watchlist'));
+
     // add current film to watchlist array
     watchlist.push(item.value)
     // update watchlist in local storage
     localStorage.setItem('watchlist', JSON.stringify(watchlist) )
+}
+
+function removeFromWatchlist(item){
+
+    
+
+    if (localStorage.getItem('watchlist')){
+
+
+        // retrieve current watchlist
+        let watchlist = JSON.parse(localStorage.getItem('watchlist'));
+
+ 
+        let updatedWatchlist = watchlist.filter((film) =>{ return film != item.value})
+
+
+
+        // update watchlist in local storage
+        localStorage.setItem('watchlist', JSON.stringify(updatedWatchlist) )
+
+        loadWatchlist();
+    }
+
+
 }
 
 // check if home page
