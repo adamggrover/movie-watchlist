@@ -36,8 +36,8 @@ a{
     color: inherit;
 }
 
-.page-link{
-    font-size: 0.8rem;
+.page-link h2{
+    font-size: 0.875rem;
 }
 
 section.form-section{
@@ -164,7 +164,7 @@ button.watchlist-btn{
 }
 
 svg.watchlist-icon{
-    margin-right: 0.3rem;
+    margin-right: 0.4rem;
 }
 
 p.film-plot{
@@ -188,4 +188,24 @@ div.placeholder-films-content{
     justify-content: flex-start;
     padding-top: 9rem;
 
+}
+
+/* watchlist page */
+
+.empty-watchlist-text{
+
+    color: #787878;
+}
+
+.empty-watchlist-link-wrapper{
+
+    display: flex;
+    align-content: center;
+    margin-top: 0.9rem;
+}
+
+p.empty-watchlist-link{
+    color: white;
+    font-size: 0.87rem;
+    margin: 0;
 }
