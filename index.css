@@ -94,6 +94,7 @@ button.search-btn{
 
 .films-container{
     padding: 3rem;
+    margin-bottom: 3rem;
     
     
 }
@@ -185,6 +186,6 @@ div.placeholder-films-content{
     height: 100vh;
     flex-grow: 1;
     justify-content: flex-start;
-    padding-top: 13rem;
+    padding-top: 9rem;
 
 }
