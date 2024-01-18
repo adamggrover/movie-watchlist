@@ -6,8 +6,9 @@ const searchBtn = document.querySelector('.search-btn');
 
 function loadWatchlist(){
 
-    
     let watchlist = JSON.parse(localStorage.getItem('watchlist'));
+
+    // checks if watchlist already has films in it and displays them if it does
 
     if (watchlist.length != 0){
 
@@ -18,8 +19,6 @@ function loadWatchlist(){
 
 
             const imdbId = item
-            // const itemIndex = searchResults.indexOf(item)
-            // const itemName = item.Title;
 
             fetch(`http://www.omdbapi.com/?apikey=9442cef9&i=${imdbId}`)
             .then(response => response.json())
@@ -63,15 +62,12 @@ function loadWatchlist(){
                 </div>
                 <hr>
                 `
-
             })
-
-
-
-            
         }
         
     }else{
+
+        // display default watchlist content for empty watchlist
 
         watchlistContainer.innerHTML = `
             <div class="placeholder-films-content">
@@ -93,9 +89,9 @@ function loadWatchlist(){
 
 }
 
+function addToWatchlist(watchlistBtn){
 
-
-function addToWatchlist(item){
+    // create watchlist array if it doesn't already exist in local storage
 
     if (!localStorage.getItem('watchlist')){
         localStorage.setItem('watchlist', '[]')
@@ -104,37 +100,31 @@ function addToWatchlist(item){
     // retrieve current watchlist
     let watchlist = JSON.parse(localStorage.getItem('watchlist'));
 
-    // add current film to watchlist array
-    watchlist.push(item.value)
+    // add current film imdb id to watchlist array
+    watchlist.push(watchlistBtn.value)
     // update watchlist in local storage
     localStorage.setItem('watchlist', JSON.stringify(watchlist) )
 }
 
 function removeFromWatchlist(item){
 
-    
-
     if (localStorage.getItem('watchlist')){
 
 
         // retrieve current watchlist
         let watchlist = JSON.parse(localStorage.getItem('watchlist'));
-
  
         let updatedWatchlist = watchlist.filter((film) =>{ return film != item.value})
-
-
 
         // update watchlist in local storage
         localStorage.setItem('watchlist', JSON.stringify(updatedWatchlist) )
 
+        // load updated watchlist
         loadWatchlist();
     }
-
-
 }
 
-// check if home page
+// Check if currently on home page and add serach ability if so
 
 if(searchBtn){
 
@@ -142,34 +132,31 @@ if(searchBtn){
         e.preventDefault()
         const searchQuery = searchInput.value;
 
+        // clear film container content
         filmsContainer.innerHTML = '';
+
+        // query movie database based on search input value
 
         fetch(`http://www.omdbapi.com/?apikey=9442cef9&s=${searchQuery}&type=movie`)
         .then( res => res.json())
         .then(searchData => {
 
-            
-
             const searchResults = searchData.Search
 
             console.log(searchResults)
 
-            
-
-            // localStorage.setItem('searchResults', JSON.stringify(searchResults))
-
+            // loop through search results and query database again based on imdb id
+            // this allows access to more data for each film than the method above
             for(item of searchResults){
 
                 const imdbId = item.imdbID
-                const itemIndex = searchResults.indexOf(item)
-                const itemName = item.Title;
-
+                
                 fetch(`http://www.omdbapi.com/?apikey=9442cef9&i=${imdbId}`)
                 .then(response => response.json())
                 .then(filmData =>{
 
+                    // display film list from search results
                     filmsContainer.innerHTML += `
-                    
                     
                     <div class="film-card">
 
@@ -187,7 +174,7 @@ if(searchBtn){
                             <div class="card-text-row-2">
                                 <p>${filmData.Runtime}</p>
                                 <p>${filmData.Genre}</p>
-                                <button class="watchlist-btn" onclick="addToWatchlist(this)" value="${imdbId}" name="${itemName}">
+                                <button class="watchlist-btn" onclick="addToWatchlist(this)" value="${imdbId}">
                                     <svg class="watchlist-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16ZM9 5C9 4.44772 8.55228 4 8 4C7.44772 4 7 4.44772 7 5V7H5C4.44772 7 4 7.44771 4 8C4 8.55228 4.44772 9 5 9H7V11C7 11.5523 7.44772 12 8 12C8.55228 12 9 11.5523 9 11V9H11C11.5523 9 12 8.55228 12 8C12 7.44772 11.5523 7 11 7H9V5Z" fill="white"/>
                                     </svg>
@@ -199,31 +186,16 @@ if(searchBtn){
                                 <p class="film-plot">${filmData.Plot}</p>
                             </a>
                             
-
                         </div>
                         
                     </div>
                     <hr>
                     `
-
                 })
-
-
-
-                
             }
-
-
         })
-
-
-
     }
     );
-
-
-
-
 }
 
 // if watchlist page, load watchlist
