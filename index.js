@@ -238,7 +238,7 @@ if(searchBtn){
 
         // query movie database based on search input value
 
-        fetch(`http://www.omdbapi.com/?apikey=9442cef9&s=${searchQuery}&type=movie`)
+        fetch(`https://www.omdbapi.com/?apikey=9442cef9&s=${searchQuery}&type=movie`)
         .then( res => res.json())
         .then(searchData => {
 
