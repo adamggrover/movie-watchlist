@@ -22,7 +22,7 @@ function displayWatchlist(){
 
             const imdbId = item
 
-            fetch(`http://www.omdbapi.com/?apikey=9442cef9&i=${imdbId}`)
+            fetch(`https://www.omdbapi.com/?apikey=9442cef9&i=${imdbId}`)
             .then(response => response.json())
             .then(filmData =>{
 
@@ -152,7 +152,7 @@ function displaySearchResults(searchResults){
 
             const imdbId = item.imdbID
             
-            fetch(`http://www.omdbapi.com/?apikey=9442cef9&i=${imdbId}`)
+            fetch(`https://www.omdbapi.com/?apikey=9442cef9&i=${imdbId}`)
             .then(response => response.json())
             .then(filmData =>{
 
