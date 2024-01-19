@@ -220,10 +220,10 @@ function displaySearchResults(searchResults){
 
 if(searchBtn){
 
+    // load previous search results if they exist in local storage
+
     if (localStorage.getItem('search results')){
         const prevSearchResults = JSON.parse(localStorage.getItem('search results'));
-
-        // console.log(prevSearchResults)
 
         displaySearchResults(prevSearchResults);
     }
