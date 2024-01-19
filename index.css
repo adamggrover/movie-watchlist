@@ -95,10 +95,7 @@ button.search-btn{
 .films-container{
     padding: 3rem;
     margin-bottom: 3rem;
-    
-    
 }
-
 
 .film-card{
     display: flex;
@@ -208,4 +205,9 @@ p.empty-watchlist-link{
     color: white;
     font-size: 0.87rem;
     margin: 0;
+}
+
+.watchlist-container{
+    padding: 3rem;
+    margin-bottom: 3rem;
 }
